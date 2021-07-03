@@ -22,7 +22,7 @@
             <option :value="true">Yes</option>
             <option :value="false">No</option>
           </select-input>
-          <file-input v-model="form.photo" :error="form.errors.photo" class="pr-6 pb-8 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" />
+<!--          <file-input v-model="form.photo" :error="form.errors.photo" class="pr-6 pb-8 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" />-->
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
           <button v-if="!user.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Delete User</button>
@@ -36,7 +36,7 @@
 <script>
 import Layout from '@/Shared/Layout'
 import TextInput from '@/Shared/TextInput'
-import FileInput from '@/Shared/FileInput'
+// import FileInput from '@/Shared/FileInput'
 import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 import TrashedMessage from '@/Shared/TrashedMessage'
@@ -48,7 +48,7 @@ export default {
     }
   },
   components: {
-    FileInput,
+    //FileInput,
     LoadingButton,
     SelectInput,
     TextInput,
@@ -62,20 +62,20 @@ export default {
   data() {
     return {
       form: this.$inertia.form({
-        _method: 'patch',
+        _method: 'put',
         first_name: this.user.first_name,
         last_name: this.user.last_name,
         email: this.user.email,
         password: null,
         is_admin: this.user.is_admin,
-        photo: null,
+        // photo: null,
       }),
     }
   },
   methods: {
     update() {
       this.form.post(this.route('users.update', this.user.id), {
-        onSuccess: () => this.form.reset('password', 'photo'),
+        onSuccess: () => this.form.reset('password'),
       })
     },
     destroy() {

@@ -15,7 +15,7 @@
             <option :value="true">Yes</option>
             <option :value="false">No</option>
           </select-input>
-          <file-input v-model="form.photo" :error="form.errors.photo" class="pr-6 pb-8 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" />
+<!--          <file-input v-model="form.photo" :error="form.errors.photo" class="pr-6 pb-8 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" />-->
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex justify-end items-center">
           <loading-button :loading="form.processing" class="btn-indigo" type="submit">Create User</loading-button>
@@ -27,7 +27,7 @@
 
 <script>
 import Layout from '@/Shared/Layout'
-import FileInput from '@/Shared/FileInput'
+// import FileInput from '@/Shared/FileInput'
 import TextInput from '@/Shared/TextInput'
 import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
@@ -35,7 +35,7 @@ import LoadingButton from '@/Shared/LoadingButton'
 export default {
   metaInfo: { title: 'Create User' },
   components: {
-    FileInput,
+    //FileInput,
     LoadingButton,
     SelectInput,
     TextInput,
@@ -45,13 +45,12 @@ export default {
   data: function () {
     return {
       form: this.$inertia.form({
-        _method: 'post',
         first_name: null,
         last_name: null,
         email: null,
         password: null,
         is_admin: false,
-        photo: null,
+        // photo: null,
       }),
     }
   },
